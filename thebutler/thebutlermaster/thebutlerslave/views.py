@@ -9,16 +9,123 @@ from django.http.response import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
-vocabulary = {
-         'ruoka': ["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
-                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!"""],
-         'taide': ["""Järjestämme tiloissamma taidenäyttelyitä ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitellä töitään.""",
+vocabulary = {        
+ 'ruoka': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruoat': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruuat': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruoan': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruuan': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruokien': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruokaa': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruokia': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruoassa': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruuassa': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+		'ruuissa': 	["""Tässä kerron kuvailevasti yrityksen ruokatarjonnasta, ja siitä kuinka herkullista se on.""",
+                    """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
+					"""Ruokamme on aina lähituotettua ja kotimaista!""",
+					"""Käytämme vain tarkkojen laatuvaatimustemme täyttämiä ruoka-aineita.""",
+					"""Tarjoamme myös vegaanisia ja kasvisvaihtoehtoja."""
+					],
+					
+        'taide': 	["""Järjestämme tiloissamma taidenäyttelyitä ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitellä töitään.""",
                     """Taiteeseen liittyvissä asiossa ota yhteyttä esimerkki@esimerkki.fi"""],
-         'yritys': ["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""],
-	
-	 'toiminta': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja näyttelyissä.""",
-		      """Toimintamme on Kallion trendikkäintä!"""]
+		'taidetta': ["""Järjestämme tiloissamma taidenäyttelyitä ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitellä töitään.""",
+                    """Taiteeseen liittyvissä asiossa ota yhteyttä esimerkki@esimerkki.fi"""],
+		'taideteos':["""Järjestämme tiloissamma taidenäyttelyitä ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitellä töitään.""",
+                    """Taiteeseen liittyvissä asiossa ota yhteyttä esimerkki@esimerkki.fi"""],
+		'taideteoksia': ["""Järjestämme tiloissamma taidenäyttelyitä ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitellä töitään.""",
+                    """Taiteeseen liittyvissä asiossa ota yhteyttä esimerkki@esimerkki.fi"""],
+		
+		
+        'yritys': 	["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+					],
+					
+		'yrityksenne': ["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+					],
+		'yrityksen': ["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+					],
+		'yrityksessä': ["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+					],
+		'yrityksestä': ["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+					],
+		'yrityksellä':["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+					],
+		'ravintola':	["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanpäällä!"""],
+		'ravintolanne':	["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanpäällä!"""],
+		'ravintolan':	["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanpäällä!"""],
+		'ravintolasta':	["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Työllistämme kuusi työntekijää ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanpäällä!"""],
+		
+		
+		'toiminta': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja näyttelyissä.""",
+					"""Toimintamme on Kallion trendikkäintä!"""],
+		'toimintamme': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja näyttelyissä.""",
+					"""Toimintamme on Kallion trendikkäintä!"""],
+		'toiminnassa': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja näyttelyissä.""",
+					"""Toimintamme on Kallion trendikkäintä!"""],
 
          }
 
