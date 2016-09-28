@@ -2,9 +2,15 @@
 # -*- coding: utf-8 -*-
 import os, sys
 import json, requests, random, re
+import thebutler
 from pprint import pprint
 from django.views import generic
 from django.http.response import HttpResponse
+
+
+#'ruuat','ruoat'
+#'ruuoka','ruoat'
+#'safka','ruoat'
 
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -140,6 +146,11 @@ def post_facebook_message(fbid, recevied_message):
      vocabulary_text = "Anteeksi herra, en ymmärtänyt kysymystänne. Osaamisalani ovat: 'ruoka','taide','yritys' ja 'toiminta'"           
  post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAHNADSZAI2gBAIrlsOJEnnC4Nl2aqBtoZA15MgIys06pLgsngJpQ2yg3KFNNhceBnNdZCJpjj92KQxKy8kHJZCoZAJa59gYWcBylimZCcIiNoi67OkI1CZAIHdblWj6UkdhYv8ZAWCWma7gl699D9PY7Bli1VRfoqwEXlH16jwSMgZDZD' 
  response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
+ # JariK 26.9.2016
+ thebutler.testi()
+ thebutler.tb_setsessionid(fbid)
+ print "kayttajan id:", fbid 
+ # end of JariK
  status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
  pprint(status.json())           
   
@@ -170,5 +181,9 @@ class thebutlerview(generic.View):
                 if 'message' in message:
                     # Print the message to the terminal
                     pprint(message)
-                    post_facebook_message(message['sender']['id'], message['message']['text'])     
-        return HttpResponse()
+		    thebutler.testi()
+ 		    thebutler.tb_setsessionid(1234)
+ 		    print "kayttajan id:", message['sender']['id']
+		    print incoming_message
+ 		    post_facebook_message(message['sender']['id'], message['message']['text'])
+	return HttpResponse()     
