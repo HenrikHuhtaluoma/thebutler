@@ -7,6 +7,8 @@ from pprint import pprint
 from django.views import generic
 from django.http.response import HttpResponse
 
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 #'ruuat','ruoat'
 #'ruuoka','ruoat'
@@ -147,9 +149,8 @@ def post_facebook_message(fbid, recevied_message):
  post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAHNADSZAI2gBAIrlsOJEnnC4Nl2aqBtoZA15MgIys06pLgsngJpQ2yg3KFNNhceBnNdZCJpjj92KQxKy8kHJZCoZAJa59gYWcBylimZCcIiNoi67OkI1CZAIHdblWj6UkdhYv8ZAWCWma7gl699D9PY7Bli1VRfoqwEXlH16jwSMgZDZD' 
  response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
  # JariK 26.9.2016
- thebutler.testi()
  thebutler.tb_setsessionid(fbid)
- print "kayttajan id:", fbid 
+ print "kayttajan id:", fbid
  # end of JariK
  status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
  pprint(status.json())           
@@ -172,6 +173,7 @@ class thebutlerview(generic.View):
     def post(self, request, *args, **kwargs):
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
+	print incoming_message
         # Facebook recommends going through every entry since they might send
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
@@ -181,9 +183,12 @@ class thebutlerview(generic.View):
                 if 'message' in message:
                     # Print the message to the terminal
                     pprint(message)
-		    thebutler.testi()
- 		    thebutler.tb_setsessionid(1234)
+		    vastaus = ''
+		    if 'text' in message['message']:
+		        vastaus = message['message']['text']
+			thebutler.tb_command(vastaus)
+		    print 'vastaus:', vastaus
  		    print "kayttajan id:", message['sender']['id']
-		    print incoming_message
  		    post_facebook_message(message['sender']['id'], message['message']['text'])
+
 	return HttpResponse()     
