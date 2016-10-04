@@ -157,7 +157,7 @@ def post_facebook_message(fbid, recevied_message):
  status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
  pprint(status.json())           
   
-
+#incoming message: {u'entry': [{u'messaging': [{u'timestamp': 1475567102490, u'message': {u'text': u'Kinkku', u'mid': u'mid.1475567102475:9abfc6de19135f4b79', u'seq': 784}, u'recipient': {u'id': u'540797152797202'}, u'sender': {u'id': u'1269803593060780'}}], u'id': u'540797152797202', u'time': 1475567105568}], u'object': u'page'}
 
 # Create your views here.
 class thebutlerview(generic.View):
