@@ -1,0 +1,2 @@
+tar -czf thebutler`date +%Y%m%d%H%M%S`_01.taz thebutler/*
+

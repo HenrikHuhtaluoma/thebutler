@@ -150,6 +150,8 @@ def post_facebook_message(fbid, recevied_message):
  response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
  # JariK 26.9.2016
  thebutler.tb_setsessionid(fbid)
+ answer = thebutler.tb_answer()
+ print "answer", answer 
  print "kayttajan id:", fbid
  # end of JariK
  status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
@@ -173,7 +175,7 @@ class thebutlerview(generic.View):
     def post(self, request, *args, **kwargs):
         # Converts the text payload into a python dictionary
         incoming_message = json.loads(self.request.body.decode('utf-8'))
-	print incoming_message
+	print 'incoming message:', incoming_message
         # Facebook recommends going through every entry since they might send
         # multiple messages in a single call during high load
         for entry in incoming_message['entry']:
@@ -188,6 +190,7 @@ class thebutlerview(generic.View):
 		        vastaus = message['message']['text']
 			thebutler.tb_command(vastaus)
 		    print 'vastaus:', vastaus
+		    print 'muuttumaton id', entry['messaging']['id']
  		    print "kayttajan id:", message['sender']['id']
  		    post_facebook_message(message['sender']['id'], message['message']['text'])
 

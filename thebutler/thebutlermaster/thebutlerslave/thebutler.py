@@ -109,6 +109,7 @@ def tb_haku(hakujono):
     if(ok==1):
         tb_clear_valinnat()
         valikko=1
+	print "valikko", valikko
         # This routine goes thru product lines, and adds those lines that have all
         # keywords given in command line. Comments added. 23.9.2016 JariK
 
@@ -328,8 +329,9 @@ def tb_command(custline):
     for index in range(len(valitut)):
         print valitut[index]
 
-def tb_answer(custline): # 27.9.2016 JariK 
-
+def tb_answer(): # 27.9.2016 JariK 
+    global valikko
+    print "valikko", valikko
     answer=[]    
     if(valikko==0):
 
