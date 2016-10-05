@@ -4,7 +4,8 @@ import os, sys
 
 valinnat=[]
 valitut=[]
-
+global sessionid
+global valikko
 
 def tb_init(): # 23.9.2016 JariK
 
@@ -22,8 +23,8 @@ def tb_init(): # 23.9.2016 JariK
     valikko=0
     
 def tb_setsessionid(sessionid2):
-
-    print "sessionid", sessionid2
+    global sessionid
+    print "sessionid-thebutler", sessionid2
     sessionid=sessionid2
 
 
@@ -356,7 +357,6 @@ print 'lisätäytteet "1+valkosipuli"'
 print 'pizzan valinta ja lisataytteet: "hollywood 1 1+valkosipuli"'
 
 tb_init()
-tb_setsessionid("1234")
 
 #while(True):
     #custline=raw_input('Enter your input:')

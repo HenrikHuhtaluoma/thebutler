@@ -137,7 +137,7 @@ vocabulary = {
 
          }
 
-def post_facebook_message(fbid, recevied_message):
+def post_facebook_message(fbid, recevied_message, sesid):
  tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
  vocabulary_text = ''
  for token in tokens:
@@ -149,7 +149,7 @@ def post_facebook_message(fbid, recevied_message):
  post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAHNADSZAI2gBAIrlsOJEnnC4Nl2aqBtoZA15MgIys06pLgsngJpQ2yg3KFNNhceBnNdZCJpjj92KQxKy8kHJZCoZAJa59gYWcBylimZCcIiNoi67OkI1CZAIHdblWj6UkdhYv8ZAWCWma7gl699D9PY7Bli1VRfoqwEXlH16jwSMgZDZD' 
  response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
  # JariK 26.9.2016
- thebutler.tb_setsessionid(fbid)
+ thebutler.tb_setsessionid(sesid)
  answer = thebutler.tb_answer()
  print "answer", answer 
  print "kayttajan id:", fbid
@@ -157,7 +157,26 @@ def post_facebook_message(fbid, recevied_message):
  status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
  pprint(status.json())           
   
-#incoming message: {u'entry': [{u'messaging': [{u'timestamp': 1475567102490, u'message': {u'text': u'Kinkku', u'mid': u'mid.1475567102475:9abfc6de19135f4b79', u'seq': 784}, u'recipient': {u'id': u'540797152797202'}, u'sender': {u'id': u'1269803593060780'}}], u'id': u'540797152797202', u'time': 1475567105568}], u'object': u'page'}
+'''
+#incoming message: {
+    u'entry': [
+        etsessionid(sesid)u'messaging': [
+            {u'timestamp': 1475567102490,
+             u'message': 
+                {u'text': u'Kinkku', u'mid': u'mid.1475567102475:9abfc6de19135f4b79', u'seq': 784},
+             u'recipient': {u'id': u'540797152797202'}, 
+             u'sender': {u'id': u'1269803593060780'}
+            }
+        ],
+        u'id': u'540797152797202', u'time': 1475567105568
+        }
+    ], u'object': u'page'
+}
+
+incoming message: {u'entry': [{u'messaging': [{u'timestamp': 1475567102490, u'message': {u'text': u'Kinkku', u'mid': u'mid.1475567102475:9abfc6de19135f4b79', u'seq': 784}, u'recipient': {u'id
+': u'540797152797202'}, u'sender': {u'id': u'1269803593060780'}}], u'id': u'540797152797202', u'time': 1475567105568}], u'object': u'page'}
+
+'''
 
 # Create your views here.
 class thebutlerview(generic.View):
@@ -186,12 +205,22 @@ class thebutlerview(generic.View):
                     # Print the message to the terminal
                     pprint(message)
 		    vastaus = ''
-		    if 'text' in message['message']:
-		        vastaus = message['message']['text']
-			thebutler.tb_command(vastaus)
-		    print 'vastaus:', vastaus
-		    print 'muuttumaton id', entry['messaging']['id']
+		    if 'id' in entry:
+			print 'setsession ID', entry['id']
+		        thebutler.tb_setsessionid('540797152797202')
+                    if 'text' in message['message']:
+			print 'vastaus tässä', message['message']['text']
+                        vastaus = message['message']['text']   
+		        thebutler.tb_command(vastaus)
+                    print 'vastaus:', vastaus
+                    if 'id' in entry: # uusi rivi                             
+                        print 'muuttumaton id', entry['id'] # uusi rivi       
+		    else: print 'EI TOIMI'
+#                   print 'muuttumaton id', entry['messaging']['id']            
+                   # print "kayttajan id:", message['sender']['id']
+		   # print 'vastaus:', vastaus
+#		    print 'muuttumaton id', entry['messaging']['id']
  		    print "kayttajan id:", message['sender']['id']
- 		    post_facebook_message(message['sender']['id'], message['message']['text'])
+ 		    post_facebook_message(message['sender']['id'], message['message']['text'], entry['id'])
 
-	return HttpResponse()     
+	return HttpResponse()
