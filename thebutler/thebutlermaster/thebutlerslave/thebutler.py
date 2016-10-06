@@ -23,7 +23,9 @@ def tb_init(): # 23.9.2016 JariK
     valikko=0
     
 def tb_setsessionid(sessionid2):
+
     global sessionid
+
     print "sessionid-thebutler", sessionid2
     sessionid=sessionid2
 
@@ -39,6 +41,9 @@ def isnum(value):
 
 def tb_clear():
 
+    global sessionid
+    global valitut
+
     print "clearing usermenu"
     for index in range(len(valitut),0):
         print "remove"+valitut[index]+valitut[index].split(',',1)[0]
@@ -49,25 +54,48 @@ def tb_clear():
 
 def tb_clear_valinnat(): # 21.9.2016 JariK 
 
-    print "clearing usermenu"
+    global sessionid
+    global valinnat
+
+    for s in reversed(valinnat): # New version 6.10.2015 JariK
+        if(s.split(',',1)[0]==sessionid):
+            print "poistettu",s
+            valinnat.remove(s)
+''' Old 1
+    print "clearing usermenu for session 3 ", sessionid
     for index in range(len(valinnat),0):
+        print index
         print "remove"+valinnat[index]+valinnat[index].split(',',1)[0]
+        print "*", valinnat[index].split(',',1)[0],sessionid
         if(valinnat[index].split(',',1)[0]==sessionid):
             print "poistettu"
             valinnat.remove(valinnat[index])
+'''
 
 
 def tb_clear_valitut(): # 23.9.2016 JariK 
 
-    print "clearing usermenu"
+    global sessionid
+    global valitut
+
+    for s in reversed(valitut):
+        if(s.split(',',1)[0]==sessionid):
+            print "poistettu",s
+            valitut.remove(s)
+
+''' Old 1
+    print "clearing usermenu for session", sessionid
     for index in range(len(valitut),0):
         print "remove"+valitut[index]+valitut[index].split(',',1)[0]
         if(valitut[index].split(',',1)[0]==sessionid):
             print "poistettu"
             valitut.remove(valitut[index])
+'''
 
 
 def tb_list_products():
+
+    global products
 
     print "tuotteet"
     for s in products:
@@ -76,6 +104,8 @@ def tb_list_products():
 
 def tb_list_valinnat():
 
+    global valinnat
+
     print "valinnat"
     for s in valinnat:
         sys.stdout.write(s)
@@ -83,12 +113,18 @@ def tb_list_valinnat():
 
 def tb_list_valitut():
 
+    global valitut
+
     print "valitut"
     for s in valitut:
         sys.stdout.write(s)
 
 
 def tb_haku(hakujono):
+
+    global products
+    global valinnat
+    global valikko
 
     print "pizzojen haku menu:hun"
 
@@ -140,14 +176,18 @@ def tb_haku(hakujono):
 
 def tb_valitut(komentojono):
 
-    print "pizzojen valinta"
+    global valinnat
+    global valitut
+    global valikko
+
+    print "pizzojen valinta, komentojono", komentojono
 
     sanat=komentojono.split(' ',10)
 
-    ok=1;
+    ok=0;
     for s in range(len(sanat)): # 16.9.2016 JariK
-        if sanat[s][0]=='+':
-            ok=0;
+        if (isnum(sanat[s])):
+            ok=1;
 
     if ok==1:
 
@@ -162,24 +202,32 @@ def tb_valitut(komentojono):
             # If this word is numeric, find x th product
             # to valitut array.
 
+            print "tb_valitut/valinnat", valinnat
             if(isnum(sanat[index])):
                 c=0 # c has number of line in this session
                 d=0 # d has index into array
                 e=int(sanat[index]) # e has number user gave
-                while True:
+                while True and d<len(valinnat):
                     if(valinnat[d].split(',',1)[0]==sessionid):
                         c=c+1
                     if(c==e):
                         break;
                     d=d+1
 
-                valitut.append(valinnat[d])
+                if(d<len(valinnat)):
+                   valitut.append(valinnat[d])
     
 
 #    tb_list_valitut()
 
 
 def tb_lisataytteet(komentojono):
+
+    global valitut
+    global valinnat
+    global sessionid
+    global products
+    global valikko
 
     print "lisataytteet pizzoille"
 
@@ -196,7 +244,7 @@ def tb_lisataytteet(komentojono):
 
     if ok == 1:
 
-        valikko=3
+        valikko=2
         d=-1
         c=-1
 
@@ -278,10 +326,21 @@ def tb_lisataytteet(komentojono):
 
 def tb_command(custline):
 
+    global valitut
+
     print(custline)
 
-    if(custline==''):
-        print "tyhjä"
+    custline=custline.replace("(",' ') # 23.9.2016 JariK
+    custline=custline.replace(")",' ') # 23.9.2016 JariK
+    custline=custline.replace("[",' ') # 23.9.2016 JariK
+    custline=custline.replace("]",' ') # 23.9.2016 JariK
+    custline=custline.replace("'",' ') # 23.9.2016 JariK
+    custline=custline.replace('{',' ') # 23.9.2016 JariK
+    custline=custline.replace('}',' ') # 23.9.2016 JariK
+    custline=custline.replace("u'",' ') # 23.9.2016 JariK
+    custline=custline.replace("'",' ') # 23.9.2016 JariK
+        
+    custline=custline.replace('+',' +') # 23.9.2016 JariK
 
     # Replace '+':ses with space plus (to fix commands like 1+garlic)
     
@@ -310,6 +369,8 @@ def tb_command(custline):
         custline=custlineb
         custlineb=custline.replace('  ',' ')
 
+    custline=custline.replace('  ',' ') # 23.9.2016 JariK
+
     # Remove spaces in beginning of command
     
     while(len(custline)>0 and custline[0]==' '):
@@ -320,18 +381,20 @@ def tb_command(custline):
     while(len(custline)>0 and custline[-1]==' '):
         custline=custline[:-1]
 
-    print(custline)
-
+    print "tb_command",custline
+    if not (custline==''):
 #    print custline.split(' ',1)
 
-    tb_haku(custline)
-    tb_valitut(custline)
-    tb_lisataytteet(custline)
-    for index in range(len(valitut)):
-        print valitut[index]
+        tb_haku(custline)
+        tb_valitut(custline)
+        tb_lisataytteet(custline)
+        for index in range(len(valitut)):
+            print valitut[index]
 
 def tb_answer(): # 27.9.2016 JariK 
+
     global valikko
+
     print "valikko", valikko
     answer=[]    
     if(valikko==0):
@@ -357,19 +420,20 @@ print 'lisätäytteet "1+valkosipuli"'
 print 'pizzan valinta ja lisataytteet: "hollywood 1 1+valkosipuli"'
 
 tb_init()
-
-#while(True):
-    #custline=raw_input('Enter your input:')
-    #if not (custline==''):
-        #tb_command(custline)
-        #answer=tb_answer(custline)
-        #print answer
-   #elif(valikko==1):
-        #tb_list_products()
-        #valikko=(valikko+1) % 3;
-    #elif(valikko==2):
-        #tb_list_valinnat()
-        #valikko=(valikko+1) % 3;
-    #elif(valikko==3):
-        #tb_list_valitut()
-        #valikko=(valikko+1) % 3;sys
+'''
+while(True):
+    custline=raw_input('Enter your input:')
+    if not (custline==''):
+        tb_command(custline)
+        answer=tb_answer()
+        print answer
+    elif(valikko==1):
+        tb_list_products()
+        valikko=(valikko+1) % 3
+    elif(valikko==2):
+        tb_list_valinnat()
+        valikko=(valikko+1) % 3
+    elif(valikko==3):
+        tb_list_valitut()
+        valikko=(valikko+1) % 3
+'''

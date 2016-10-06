@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'sendgrid_mr_slowpoke'
-EMAIL_HOST_PASSWORD = 'sendgrid_0503123!bye'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

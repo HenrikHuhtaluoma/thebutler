@@ -140,22 +140,42 @@ vocabulary = {
 def post_facebook_message(fbid, recevied_message, sesid):
  tokens = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message).lower().split()
  vocabulary_text = ''
+ answerok=0;
  for token in tokens:
      if token in vocabulary:
          vocabulary_text = random.choice(vocabulary[token])
+         answerok=1
          break
  if not vocabulary_text:
      vocabulary_text = "Anteeksi herra, en ymmärtänyt kysymystänne. Osaamisalani ovat: 'ruoka','taide','yritys' ja 'toiminta'"           
- post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAHNADSZAI2gBAIrlsOJEnnC4Nl2aqBtoZA15MgIys06pLgsngJpQ2yg3KFNNhceBnNdZCJpjj92KQxKy8kHJZCoZAJa59gYWcBylimZCcIiNoi67OkI1CZAIHdblWj6UkdhYv8ZAWCWma7gl699D9PY7Bli1VRfoqwEXlH16jwSMgZDZD' 
- response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
+ post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAHNADSZAI2gBAJ1DNMBfQsDIAbKZCTixRuZBekezzXyggOWcZCrfUYJrZBhSrkow9ZAxaEPWJMutxZA6Fn0uBfEwetfx3iUasfkM6cT7gxHWtF072ZCXOHZCk7ZAZBi5zAY8y1M0qI5mi9EWPcjtaEtCjyzrsn2vikIbJYw8qEFunWHQZDZD' 
+
+# response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
  # JariK 26.9.2016
  thebutler.tb_setsessionid(sesid)
  answer = thebutler.tb_answer()
  print "answer", answer 
  print "kayttajan id:", fbid
  # end of JariK
- status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
- pprint(status.json())           
+ print "answerok", answerok
+ if(answerok==1):
+     print "vocabulary text", vocabulary_text
+     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
+     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+     pprint(status.json())           
+ else:
+     print "answer", answer
+
+     print "answer lines"
+     
+     for s in answer:
+         answer2=''.join(str(s))
+         print "answer line (",len(answer2),")", answer2
+         for s2 in answer2.split('\\n',10):
+             print "s2 line:", s2
+             response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":s2}})
+             status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+             pprint(status.json())           
   
 '''
 #incoming message: {
