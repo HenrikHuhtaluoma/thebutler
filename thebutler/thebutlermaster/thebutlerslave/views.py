@@ -18,122 +18,122 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 vocabulary = {        
- 'ruoka': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+ 'ruoka': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruoat': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruoat': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruuat': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruuat': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruoan': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruoan': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruuan': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruuan': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruokien': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruokien': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruokaa': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruokaa': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruokia': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruokia': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruoassa': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruoassa': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruuassa': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruuassa': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
-		'ruuissa': 	["""T√§ss√§ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit√§ kuinka herkullista se on.""",
+		'ruuissa': 	["""T‰ss‰ kerron kuvailevasti yrityksen ruokatarjonnasta, ja siit‰ kuinka herkullista se on.""",
                     """Testiravintolamme tarjoaa herkullista brunssia, lounasta ja illallista. Kokeile kuuluisaa kolmen annoksen menuamme!""",
-					"""Ruokamme on aina l√§hituotettua ja kotimaista!""",
-					"""K√§yt√§mme vain tarkkojen laatuvaatimustemme t√§ytt√§mi√§ ruoka-aineita.""",
-					"""Tarjoamme my√∂s vegaanisia ja kasvisvaihtoehtoja."""
+					"""Ruokamme on aina l‰hituotettua ja kotimaista!""",
+					"""K‰yt‰mme vain tarkkojen laatuvaatimustemme t‰ytt‰mi‰ ruoka-aineita.""",
+					"""Tarjoamme myˆs vegaanisia ja kasvisvaihtoehtoja."""
 					],
 					
-        'taide': 	["""J√§rjest√§mme tiloissamma taiden√§yttelyit√§ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell√§ t√∂it√§√§n.""",
-                    """Taiteeseen liittyviss√§ asiossa ota yhteytt√§ esimerkki@esimerkki.fi"""],
-		'taidetta': ["""J√§rjest√§mme tiloissamma taiden√§yttelyit√§ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell√§ t√∂it√§√§n.""",
-                    """Taiteeseen liittyviss√§ asiossa ota yhteytt√§ esimerkki@esimerkki.fi"""],
-		'taideteos':["""J√§rjest√§mme tiloissamma taiden√§yttelyit√§ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell√§ t√∂it√§√§n.""",
-                    """Taiteeseen liittyviss√§ asiossa ota yhteytt√§ esimerkki@esimerkki.fi"""],
-		'taideteoksia': ["""J√§rjest√§mme tiloissamma taiden√§yttelyit√§ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell√§ t√∂it√§√§n.""",
-                    """Taiteeseen liittyviss√§ asiossa ota yhteytt√§ esimerkki@esimerkki.fi"""],
+        'taide': 	["""J‰rjest‰mme tiloissamma taiden‰yttelyit‰ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell‰ tˆit‰‰n.""",
+                    """Taiteeseen liittyviss‰ asiossa ota yhteytt‰ esimerkki@esimerkki.fi"""],
+		'taidetta': ["""J‰rjest‰mme tiloissamma taiden‰yttelyit‰ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell‰ tˆit‰‰n.""",
+                    """Taiteeseen liittyviss‰ asiossa ota yhteytt‰ esimerkki@esimerkki.fi"""],
+		'taideteos':["""J‰rjest‰mme tiloissamma taiden‰yttelyit‰ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell‰ tˆit‰‰n.""",
+                    """Taiteeseen liittyviss‰ asiossa ota yhteytt‰ esimerkki@esimerkki.fi"""],
+		'taideteoksia': ["""J‰rjest‰mme tiloissamma taiden‰yttelyit‰ ja erilaisia gallerioita, joissa paikalliset lahjakkuudet voivat esitell‰ tˆit‰‰n.""",
+                    """Taiteeseen liittyviss‰ asiossa ota yhteytt‰ esimerkki@esimerkki.fi"""],
 		
 		
         'yritys': 	["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
 					],
 					
 		'yrityksenne': ["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
 					],
 		'yrityksen': ["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
 					],
-		'yrityksess√§': ["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+		'yrityksess‰': ["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
 					],
-		'yrityksest√§': ["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+		'yrityksest‰': ["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
 					],
-		'yrityksell√§':["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
+		'yrityksell‰':["""Yrityksemme on perustettu vuonna 2012.""",
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa."""
 					],
 		'ravintola':	["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
-					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp√§√§ll√§!"""],
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp‰‰ll‰!"""],
 		'ravintolanne':	["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
-					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp√§√§ll√§!"""],
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp‰‰ll‰!"""],
 		'ravintolan':	["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
-					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp√§√§ll√§!"""],
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp‰‰ll‰!"""],
 		'ravintolasta':	["""Yrityksemme on perustettu vuonna 2012.""",
-                    """Ty√∂llist√§mme kuusi ty√∂ntekij√§√§ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
-					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp√§√§ll√§!"""],
+                    """Tyˆllist‰mme kuusi tyˆntekij‰‰ ja ruokaamme on kehuttu muunmuassa Helsingin Sanomissa.""",
+					"""Ravintolamme tarjoaa herkullista ruokaa niin mukaan kuin paikanp‰‰ll‰!"""],
 		
 		
-		'toiminta': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja n√§yttelyiss√§.""",
-					"""Toimintamme on Kallion trendikk√§int√§!"""],
-		'toimintamme': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja n√§yttelyiss√§.""",
-					"""Toimintamme on Kallion trendikk√§int√§!"""],
-		'toiminnassa': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja n√§yttelyiss√§.""",
-					"""Toimintamme on Kallion trendikk√§int√§!"""],
+		'toiminta': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja n‰yttelyiss‰.""",
+					"""Toimintamme on Kallion trendikk‰int‰!"""],
+		'toimintamme': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja n‰yttelyiss‰.""",
+					"""Toimintamme on Kallion trendikk‰int‰!"""],
+		'toiminnassa': ["""Olemme mukana vaikuttamassa erilaisilla festivaaleilla ja n‰yttelyiss‰.""",
+					"""Toimintamme on Kallion trendikk‰int‰!"""],
 
          }
 
@@ -147,7 +147,7 @@ def post_facebook_message(fbid, recevied_message, sesid):
          answerok=1
          break
  if not vocabulary_text:
-     vocabulary_text = "Anteeksi herra, en ymm√§rt√§nyt kysymyst√§nne. Osaamisalani ovat: 'ruoka','taide','yritys' ja 'toiminta'"           
+     vocabulary_text = "Anteeksi herra, en ymm‰rt‰nyt kysymyst‰nne. Osaamisalani ovat: 'ruoka','taide','yritys' ja 'toiminta'"           
  post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=EAAHNADSZAI2gBAJ1DNMBfQsDIAbKZCTixRuZBekezzXyggOWcZCrfUYJrZBhSrkow9ZAxaEPWJMutxZA6Fn0uBfEwetfx3iUasfkM6cT7gxHWtF072ZCXOHZCk7ZAZBi5zAY8y1M0qI5mi9EWPcjtaEtCjyzrsn2vikIbJYw8qEFunWHQZDZD' 
 
 # response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":vocabulary_text}})
@@ -229,7 +229,7 @@ class thebutlerview(generic.View):
 			print 'setsession ID', entry['id']
 		        thebutler.tb_setsessionid('540797152797202')
                     if 'text' in message['message']:
-			print 'vastaus t√§ss√§', message['message']['text']
+			print 'vastaus t‰ss‰', message['message']['text']
                         vastaus = message['message']['text']   
 		        thebutler.tb_command(vastaus)
                     print 'vastaus:', vastaus
