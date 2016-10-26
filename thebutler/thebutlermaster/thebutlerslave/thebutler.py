@@ -7,6 +7,8 @@ valitut=[]
 global sessionid
 global valikko
 
+sessionidsep='/'
+
 def tb_init(): # 23.9.2016 JariK
 
     global products
@@ -47,7 +49,7 @@ def tb_clear():
     print "clearing usermenu"
     for index in range(len(valitut),0):
         print "remove"+valitut[index]+valitut[index].split(',',1)[0]
-        if(valitut[index].split(',',1)[0]==sessionid):
+        if(valitut[index].split(sessionidsep,1)[0]==sessionid):
             print "poistettu"
             valitut.remove(valitut[index])
 
@@ -58,7 +60,7 @@ def tb_clear_valinnat(): # 21.9.2016 JariK
     global valinnat
 
     for s in reversed(valinnat): # New version 6.10.2015 JariK
-        if(s.split(',',1)[0]==sessionid):
+        if(s.split(sessionidsep,1)[0]==sessionid):
             print "poistettu",s
             valinnat.remove(s)
 ''' Old 1
@@ -79,7 +81,7 @@ def tb_clear_valitut(): # 23.9.2016 JariK
     global valitut
 
     for s in reversed(valitut):
-        if(s.split(',',1)[0]==sessionid):
+        if(s.split(sessionidsep,1)[0]==sessionid):
             print "poistettu",s
             valitut.remove(s)
 
@@ -121,12 +123,11 @@ def tb_list_valitut():
 
 
 def tb_haku(hakujono):
-
+    global sessionid
     global products
     global valinnat
     global valikko
-
-    print "pizzojen haku menu:hun"
+    global valitut
 
     c=1;
     sanat=hakujono.split(' ',10)
@@ -144,6 +145,7 @@ def tb_haku(hakujono):
 
 
     if(ok==1):
+        print "pizzojen haku menu:hun"
         tb_clear_valinnat()
         valikko=1
 	print "valikko", valikko
@@ -168,19 +170,18 @@ def tb_haku(hakujono):
                 sys.stdout.write(str(c)+". ")
                 sys.stdout.write(s)
                 c+=1
-                string = sessionid+","+s
+                string = sessionid+sessionidsep+s
                 valinnat.append(string)
 
     tb_list_valinnat()
 
 
 def tb_valitut(komentojono):
-
+    global sessionid
     global valinnat
     global valitut
     global valikko
-
-    print "pizzojen valinta, komentojono", komentojono
+    global products
 
     sanat=komentojono.split(' ',10)
 
@@ -191,6 +192,7 @@ def tb_valitut(komentojono):
 
     if ok==1:
 
+        print "pizzojen valinta, komentojono", komentojono
         valikko=2
         # This routine goes thru products selected with keywords,
         # and writes products matching index in given by user
@@ -208,7 +210,7 @@ def tb_valitut(komentojono):
                 d=0 # d has index into array
                 e=int(sanat[index]) # e has number user gave
                 while True and d<len(valinnat):
-                    if(valinnat[d].split(',',1)[0]==sessionid):
+                    if(valinnat[d].split(sessionidsep,1)[0]==sessionid):
                         c=c+1
                     if(c==e):
                         break;
@@ -229,8 +231,6 @@ def tb_lisataytteet(komentojono):
     global products
     global valikko
 
-    print "lisataytteet pizzoille"
-
     sanat=komentojono.split(' ',10)
 
     ok=0;
@@ -245,6 +245,7 @@ def tb_lisataytteet(komentojono):
     if ok == 1:
 
         valikko=2
+        print "lisataytteet pizzoille"        
         d=-1
         c=-1
 
@@ -269,7 +270,7 @@ def tb_lisataytteet(komentojono):
                 # Find c:th pizza
 
                 while(c < len(valitut) and d<e): # 20.9.2016 JariK */
-                    if(valinnat[d].split(',',1)[0]==sessionid):
+                    if(valinnat[d].split(sessionidsep,1)[0]==sessionid):
 #                        print valitut[c]
 
                         # This line is product
@@ -284,7 +285,7 @@ def tb_lisataytteet(komentojono):
                 # Skip toppings
 
                 while(c < len(valitut)):
-                    if(valinnat[d].split(',',1)[0]==sessionid):
+                    if(valinnat[d].split(sessionidsep,1)[0]==sessionid):
 #                        print valitut[c]
                         if 'pizza' in valitut[c]: # This line is pizza
                             break;
@@ -313,7 +314,7 @@ def tb_lisataytteet(komentojono):
 #                            print "*3",hakusana
 #                            print "*4",t
                             if(c!=-1):
-                                string = sessionid+","+t
+                                string = sessionid+sessionidsep+t
 #                                print "lisätty",string
                                 if(c<len(valitut)): # 21.9.2016 JariK
                                     valitut.insert(c,string)
@@ -328,6 +329,7 @@ def tb_command(custline):
 
     global valitut
 
+    print "sessionid-thebutler command", sessionid
     print(custline)
 
     custline=custline.replace("(",' ') # 23.9.2016 JariK
@@ -394,21 +396,45 @@ def tb_command(custline):
 def tb_answer(): # 27.9.2016 JariK 
 
     global valikko
-
+    global valinnat
+    global valitut
+    global products
+    print "sessionid-thebutler answer", sessionid
     print "valikko", valikko
+    print "valinnat", valinnat
+    print "valitut", valitut
     answer=[]    
     if(valikko==0):
 
-#        for index in range(len(valitut)):
-        answer.append(products)
-    
+      c=1;
+      for a2 in products:
+        if(a2.count(sessionidsep)>0):
+          answer.append(str(c)+'. '+a2.split(sessionidsep,40)[1])
+        else:
+          answer.append(a2)
+        c=c+1
+
     elif(valikko==1):
-        answer.append(valinnat)
 
+      c=1;
+      for a2 in valinnat:
+        if(a2.count(sessionidsep)>0):
+          answer.append(str(c)+'. '+a2.split(sessionidsep,40)[1])
+        else:
+          answer.append(a2)
+        c=c+1
+    
     elif(valikko==2):
-        answer.append(valitut)
 
-    print "anssi"
+      c=1;
+      for a2 in valitut:
+        if(a2.count(sessionidsep)>0):
+          answer.append(str(c)+'. '+a2.split(sessionidsep,40)[1])
+        else:
+          answer.append(a2)
+        c=c+1
+
+    print "anssi", answer
 
     return(answer)
 

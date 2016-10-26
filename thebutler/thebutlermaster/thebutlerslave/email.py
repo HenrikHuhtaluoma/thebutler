@@ -3,10 +3,4 @@
 
 from django.core.mail import send_mail
 
-send_mail(
-    'Uusi tilaus',
-    'Here is the message.',
-    'tilaus@tilaus.com',
-    ['henrik.huhtaluoma@gmail.com'],
-    fail_silently=False,
-)
+send_mail('subject', 'body of the message', 'tilaus@huhtaluoma.com', ['henrik.huhtaluoma@gmail.com'])
