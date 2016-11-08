@@ -27,6 +27,7 @@ def tb_init(): # 23.9.2016 JariK
 def tb_setsessionid(sessionid2):
 
     global sessionid
+
     print "sessionid-thebutler", sessionid2
     sessionid=sessionid2
 
@@ -314,7 +315,7 @@ def tb_lisataytteet(komentojono):
 #                            print "*4",t
                             if(c!=-1):
                                 string = sessionid+sessionidsep+t
-#                                print "lis√§tty",string
+#                                print "lis‰tty",string
                                 if(c<len(valitut)): # 21.9.2016 JariK
                                     valitut.insert(c,string)
                                 else:
@@ -327,7 +328,6 @@ def tb_lisataytteet(komentojono):
 def tb_command(custline):
 
     global valitut
-    global valikko
 
     print "sessionid-thebutler command", sessionid
     print(custline)
@@ -385,23 +385,8 @@ def tb_command(custline):
 
     print "tb_command",custline
     if not (custline==''):
-      print 'tilaus t√§ss√§', custline
-    
-      if 'tilaa' in custline.lower():
-        tilaus=[]
-        valikko=10      
-        c=1;
-        for a2 in valitut:
-          if(a2.count(sessionidsep)>0):
-            tilaus.append(str(c)+'. '+a2.split(sessionidsep,40)[1])
-          else:
-            tilaus.append(a2)
-          c=c+1
-        print "valmis tilaus", tilaus
-        print "tilausvalikko", valikko
-        tb_clear_valinnat()
-        tb_clear_valitut()
-      else:  
+#    print custline.split(' ',1)
+
         tb_haku(custline)
         tb_valitut(custline)
         tb_lisataytteet(custline)
@@ -448,141 +433,18 @@ def tb_answer(): # 27.9.2016 JariK
         else:
           answer.append(a2)
         c=c+1
-        
-    elif(valikko==10):
-        answer=[]
-        answer.append('tilattu')
 
     print "anssi", answer
 
     return(answer)
 
-def tb_answer2(): # 27.9.2016 JariK 
 
-    global valitut
-    print "sessionid-thebutler answer", sessionid
-    print "valitut", valitut
-    answer=[]    
-
-    c=1;
-    for a2 in valitut:
-      if(a2.count(sessionidsep)>0):
-        answer.append(str(c)+'. '+a2.split(sessionidsep,40)[1])
-      else:
-        answer.append(a2)
-      c=c+1
-        
-
-    print "anssi", answer
-
-    return(answer)
-    
 print "thebutler"
 print 'tuotteiden valinta raaka-aineiden tai nimen mukaan: "kinkku ananas"'
 print 'valinta listasta: "2"'
-print 'lis√§t√§ytteet "1+valkosipuli"'
+print 'lis‰t‰ytteet "1+valkosipuli"'
 print 'pizzan valinta ja lisataytteet: "hollywood 1 1+valkosipuli"'
 
-def comp(list1, list2):
-
-  ok=1
-  if len(list1) != len(list2):
-      ok=0;
-      return(ok)
-  
-  for elem in list1:
-      if not elem in list2:
-          ok=0
-
-  return ok
-
-def tb_test():
-
-    global products
-    global valinnat
-    global valitut
-
-    print 'testing....'
-
-    testsfail=0
-
-    tb_setsessionid('1234')
-    products= [
-        'Tuote 1 a,b,c,d',
-        'Tuote 2 a,b,c',
-        'Tuote 3 a,b',
-        'Tuote 4 a',
-    ]
-    tb_command('a')
-    if comp(tb_answer(), ['1. Tuote 1 a,b,c,d', '2. Tuote 2 a,b,c', '3. Tuote 3 a,b', '4. Tuote 4 a']):
-      print 'test1ok'
-    else:
-      print 'test1fail'
-      testsfail=1
-
-    tb_command('b')
-    if comp(tb_answer(), ['1. Tuote 1 a,b,c,d', '2. Tuote 2 a,b,c', '3. Tuote 3 a,b']):
-      print 'test2ok'
-    else:
-      print 'test2fail'
-      testsfail=1
-    
-    tb_command('c')
-    if comp(tb_answer(), ['1. Tuote 1 a,b,c,d', '2. Tuote 2 a,b,c']):
-      print 'test3ok'
-    else:
-      print 'test3fail'
-      testsfail=1
-
-    tb_command('d')
-    if comp(tb_answer(), ['1. Tuote 1 a,b,c,d']):
-      print 'test4ok'
-    else:
-      print 'test4fail'
-      testsfail=1
-
-    valitut=[]
-    tb_command('a,1')
-    if comp(tb_answer(), ['1. Tuote 1 a,b,c,d']):
-      print 'test5ok'
-    else:
-      print 'test5fail'
-      testsfail=1
-
-    valitut=[]
-    tb_command('a,2')
-    if comp(tb_answer(), ['1. Tuote 2 a,b,c']):
-      print 'test6ok'
-    else:
-      print 'test6fail'
-      testsfail=1
-
-    valitut=[]
-    tb_command('a,3')
-    if comp(tb_answer(), ['1. Tuote 3 a,b']):
-      print 'test7ok'
-    else:
-      print 'test7fail'
-      testsfail=1
-
-    valitut=[]
-    tb_command('a,4')
-    if comp(tb_answer(), ['1. Tuote 4 a']):
-      print 'test8ok'
-    else:
-      print 'test8fail'
-      testsfail=1
-
-    if(testsfail==1):
-        print '============Tests FAIL=========='
-    else: 
-        print '===========Tests OK==========='
-
-    products = []
-    valitut = []
-    valinnat = []
-
-tb_test()
 tb_init()
 '''
 while(True):
